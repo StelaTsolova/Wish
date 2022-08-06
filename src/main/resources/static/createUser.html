@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Online shop</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#navbar").load("/navbar");
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="navbar">Navbar</div>
+
+<div class="container">
+    <form class="main-form mx-auto d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="firstName" class="text-white font-weight-bold">First name</label>
+                <input id="firstName"
+                       name="firstName"
+                       type="text"
+                       class="form-control"/>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="lastName" class="text-white font-weight-bold">Last name</label>
+                <input id="lastName"
+                       name="lastName"
+                       type="text"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="email" class="text-white font-weight-bold">Email</label>
+                <input id="email"
+                       name="email"
+                       type="text"
+                       class="form-control"/>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="phoneNumber" class="text-white font-weight-bold">Phone number</label>
+                <input id="phoneNumber"
+                       name="phoneNumber"
+                       type="text"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="role">Role</label>
+                <select id="role"
+                        name="role"
+                        class="form-control">
+                    <option value="">- Select role -</option>
+                    <option>USER</option>
+                    <option>ADMIN</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="password" class="text-white font-weight-bold">Password</label>
+                <input id="password"
+                       name="password"
+                       type="password"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="action row">
+            <button class="login btn btn-default" type="submit">Create user</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/createUser.js"></script>
+</body>
+</html>

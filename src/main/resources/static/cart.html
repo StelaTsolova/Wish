@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Online shop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/cart.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!--    <script src="/js/bootstrap.bundle.min.js"></script>-->
+    <!--    <script src="/js/jquery-3.3.1.slim.min.js"></script>-->
+    <script>
+        $(function () {
+            $("#navbar").load("/navbar");
+        });
+    </script>
+</head>
+<body>
+
+<div id="navbar">Navbar</div>
+
+<main class="page">
+    <section class="shopping-cart dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2>Shopping Cart</h2>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="items">
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="summary">
+                            <h3>Summary</h3>
+                            <div class="summary-item">
+                                <span class="text">Total</span>
+                                <span id="total-price"></span>
+                            </div>
+                            <button type="button" class="btn btn-checkout btn-lg btn-block">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/js/cart.js"></script>
+</body>
+</html>
