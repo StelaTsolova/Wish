@@ -35,19 +35,10 @@ public class OrderServiceImpl implements OrderService {
 
         List<CartProduct> products = new ArrayList<>(userEntity.getCart().getCartProducts());
 
-        System.out.println(userEntity.getCart().getCartProducts().size());
-
-
-        System.out.println(userEntity.getCart().getCartProducts().size());
-
-        System.out.println(userEntity);
-        System.out.println(products);
-
         Order order = this.modelMapper.map(orderCreateDto, Order.class);
         order.setOwner(userEntity);
         order.setProducts(products);
         order.setCreated(LocalDateTime.now());
-        System.out.println(order);
 
         this.orderRepository.save(order);
         this.userEntityService.clearCart(userDetails.getId());

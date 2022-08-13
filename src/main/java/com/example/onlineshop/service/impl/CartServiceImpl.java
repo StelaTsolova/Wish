@@ -38,9 +38,9 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public boolean addProduct(CartProductAddDto productAddDto, Long userId) {
-        Long productId = productAddDto.getProductId();
-        String productSize = productAddDto.getProductSize();
+    public boolean addProduct(CartProductAddDto cartProductAddDto, Long userId) {
+        Long productId = cartProductAddDto.getProductId();
+        String productSize = cartProductAddDto.getProductSize();
 
         Cart cart = this.userEntityService.getUserById(userId).getCart();
         Product product = this.productService.getProductById(productId);

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CartService {
 
-    boolean addProduct(CartProductAddDto productAddDto, Long userId);
+    boolean addProduct(CartProductAddDto cartProductAddDto, Long userId);
 
     List<CartDto> getProducts(Long userId);
 
