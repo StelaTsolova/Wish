@@ -30,4 +30,6 @@ public interface UserEntityService {
     boolean changePassword(UserChangePasswordDto userChangePasswordDto, Long id);
 
     void clearCart(Long id);
+
+    UserEntity getUserByEmail(String email);
 }

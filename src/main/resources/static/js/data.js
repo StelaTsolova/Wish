@@ -9,7 +9,7 @@ async function loadInfo() {
     const response = await fetch('http://localhost:8080/users', {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         }
     });
     if (response.status == 200) {
@@ -33,7 +33,7 @@ async function createOrder(e) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             'firstName': formData.firstName,

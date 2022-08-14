@@ -29,20 +29,20 @@ async function loginUser(e) {
             password
         })
     });
-
+    console.log(response)
     if (response.status == 200) {
-        const data = await response.json()
+        const data = await response.json();
+        console.log(data)
 
         let role = data.roles[0];
         role = role.substring(5, role.length);
 
-        localStorage.setItem("accessToken", data.token);
+        // localStorage.setItem("accessToken", data.token);
         localStorage.setItem("email", data.email);
         localStorage.setItem("firstName", data.firstName);
         localStorage.setItem("role", role);
 
         window.location = '/home';
     } else {
-        errorElement.style.visibility = 'visible';
-    }
+        errorElement.style.visibility = 'visible';}
 }

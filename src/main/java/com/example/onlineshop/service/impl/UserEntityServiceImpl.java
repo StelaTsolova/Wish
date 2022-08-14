@@ -127,4 +127,10 @@ public class UserEntityServiceImpl implements UserEntityService {
 
       this.userEntityRepository.save(userEntity);
     }
+
+    @Override
+    public UserEntity getUserByEmail(String email) {
+        return this.userEntityRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " is not found!"));
+    }
 }

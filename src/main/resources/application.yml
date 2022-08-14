@@ -29,7 +29,7 @@ cloudinary:
   api-secret: ${CLOUDINERY_API_SECRET}
   cloud-name: dj0dxejrk
 
-example:
-  app:
-    jwtSecret: MySecretKey
-    jwtExpirationMs: 86400000
+#example:
+#  app:
+#    jwtSecret: MySecretKey
+#    jwtExpirationMs: 86400000

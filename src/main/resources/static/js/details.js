@@ -70,7 +70,7 @@ async function addToCart(e) {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             productId,
@@ -90,7 +90,7 @@ async function addToWishlist() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             productId
@@ -173,9 +173,9 @@ function redirectEdit() {
 async function deleteProduct() {
     const response = await fetch('http://localhost:8080/products?id=' + productId, {
         method: 'DELETE',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        }
+        // headers: {
+        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+        // }
     });
 
     if (response.status === 204) {

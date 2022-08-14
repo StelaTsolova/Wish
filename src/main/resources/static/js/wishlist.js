@@ -10,9 +10,9 @@ async function loadProduct() {
 
     const response = await fetch('http://localhost:8080/users/wishlist', {
         method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        }
+        // headers: {
+        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+        // }
     });
 
     if (response.status == 200) {

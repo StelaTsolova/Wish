@@ -1,16 +1,16 @@
 window.addEventListener('load', () => {
     let itemsElement = document.querySelector('.items');
     document.querySelector('button').addEventListener('click', redirectData);
-
+console.log(document.querySelector('button'))
     loadProducts(itemsElement);
 })
 
 async function loadProducts(itemsElement) {
     const response = await fetch('http://localhost:8080/cart/products', {
         method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        }
+        // headers: {
+        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+        // }
     });
     const data = await response.json();
 
@@ -75,7 +75,7 @@ async function updateQuantity(e) {
         method: 'PATCH',
         headers: {
             'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             quantity
@@ -98,10 +98,10 @@ async function remove(e) {
     const response = await fetch('http://localhost:8080/cart/' + productId, {
         method: 'DELETE',
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         }
     });
-    if (response.status == 200) {
+    if (response.status == 204) {
         e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
         totalSum();
     }

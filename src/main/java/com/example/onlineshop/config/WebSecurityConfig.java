@@ -2,9 +2,6 @@ package com.example.onlineshop.config;
 
 import com.example.onlineshop.model.enums.ERole;
 import com.example.onlineshop.repisotiry.UserEntityRepository;
-import com.example.onlineshop.service.impl.UserDetailsImpl;
-import com.example.onlineshop.web.jwt.AuthEntryPointJwt;
-import com.example.onlineshop.web.jwt.AuthTokenFilter;
 import com.example.onlineshop.service.impl.UserDetailsServiceImpl;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,12 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public WebSecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-
-    @Bean
-    public AuthTokenFilter authenticationJwtTokenFilter() {
-        return new AuthTokenFilter(userDetailsService);
-    }
-
 
     @Bean
     public UserDetailsService userDetailsService(UserEntityRepository userEntityRepository) {
@@ -65,22 +55,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-            http.csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/", "/home", "/users/login", "/users/register", "/login",
-                        "/register", "/products", "/details", "/navbar", "/categories",
+                .antMatchers("/", "/home", "/details", "/navbar", "/categories", "/products",
                         "/products/category", "/products/{id}").permitAll()
                 .antMatchers("/product", "/user", "/statistics").hasRole(ERole.ADMIN.name())
+                .antMatchers("/login", "/users/login", "/register", "/users/register").anonymous()
                 .anyRequest().authenticated()
-            .and()
+             .and()
                 .logout()
+                .logoutUrl("/logout")
                 .invalidateHttpSession(true)
-                .logoutSuccessUrl("/home")
-                .deleteCookies("JSESSIONID")
-            .and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-                    .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+                .deleteCookies("JSESSIONID");
     }
 }

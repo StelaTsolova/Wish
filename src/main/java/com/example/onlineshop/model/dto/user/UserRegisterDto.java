@@ -12,7 +12,7 @@ public class UserRegisterDto {
     @UserEmailUnique
     private String email;
 
-    @Size(min = 8, max = 40,  message = "Password should be between 8 and 40 symbols.")
+    @Size(min = 1, max = 40,  message = "Password should be between 8 and 40 symbols.")
     private String password;
 
     @NotBlank

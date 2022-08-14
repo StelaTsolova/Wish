@@ -6,9 +6,9 @@ addProduct();
 const rightNavbar = document.querySelector('.navbar-right');
 rightNavbar.addEventListener('click', onClick);
 
-const accessToken = localStorage.getItem('accessToken');
+const email = localStorage.getItem('email');
 const role = localStorage.getItem('role');
-if (accessToken != null) {
+if (email != null) {
     if (role === 'USER') {
         rightNavbar.append(createOption('Wishlist', '/images/icon/heart.png'));
         rightNavbar.append(createOption('Cart', '/images/icon/cart.png'));
@@ -113,17 +113,19 @@ function onClick(e) {
 }
 
 function account() {
-    if (accessToken == null) {
+    if (email == null) {
         window.location = '/login';
     } else {
         window.location = '/information';
     }
 }
 
-function logout() {
-    window.location = "/logout";
-
-    localStorage.removeItem('accessToken');
+async function logout() {
+   let response = await fetch('http://localhost:8080/logout', {
+        method:'POST'
+    });
+console.log(response.status)
+    // localStorage.removeItem('accessToken');
     localStorage.removeItem('email');
     localStorage.removeItem('firstName');
     localStorage.removeItem('role');

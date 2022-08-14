@@ -52,7 +52,7 @@ async function removePicture(e) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             'url': url
@@ -95,7 +95,7 @@ async function createProduct(e) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             name,
@@ -136,7 +136,7 @@ async function editProduct(e) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             name,

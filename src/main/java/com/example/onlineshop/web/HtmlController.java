@@ -1,82 +1,83 @@
 package com.example.onlineshop.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HtmlController {
 
-    @RequestMapping("/home")
+    @GetMapping("/home")
     public String home() {
         return "index.html";
     }
 
-    @RequestMapping("/navbar")
+    @GetMapping("/navbar")
     public String navbar() {
         return "navbar.html";
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login() {
         return "login.html";
     }
 
-    @RequestMapping("/register")
+    @GetMapping("/register")
     public String register() {
         return "register.html";
     }
 
-    @RequestMapping("/information")
+    @GetMapping("/information")
     public String information() {
         return "account.html";
     }
 
-    @RequestMapping("/change")
+    @GetMapping("/change")
     public String change() {
         return "changePassword.html";
     }
 
-    @RequestMapping("/wishlist")
+    @GetMapping("/wishlist")
     public String wishlist() {
         return "wishlist.html";
     }
 
-    @RequestMapping("/cart")
+    @GetMapping("/cart")
     public String cart() {
         return "cart.html";
     }
 
-    @RequestMapping("/products")
+    @GetMapping("/products")
     public String products() {
         return "products.html";
     }
 
-    @RequestMapping("/details")
+    @GetMapping("/details")
     public String details() {
         return "details.html";
     }
 
-    @RequestMapping("/product")
+    @GetMapping("/product")
     public String createProduct() {
         return "createProduct.html";
     }
 
-    @RequestMapping("/user")
+    @GetMapping("/user")
     public String createUser() {
         return "createUser.html";
     }
 
-    @RequestMapping("/data")
+    @GetMapping("/data")
     public String data() {
         return "data.html";
     }
 
-    @RequestMapping("/order")
+    @GetMapping("/order")
     public String order() {
         return "order.html";
     }
 
-    @RequestMapping("/statistic")
+    @GetMapping("/statistic")
     public String statistic() {
         return "statistic.html";
     }

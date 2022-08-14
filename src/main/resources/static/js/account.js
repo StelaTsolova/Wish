@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     let userEmail = localStorage.getItem('email');
     document.querySelector('h2').textContent = 'Information for ' + userEmail;
-    document.querySelector('button[type="button"]').addEventListener('click', redirectChangePassword);
+    document.querySelector('.change-pass').addEventListener('click', redirectChangePassword);
 
     loadInformation();
 });
@@ -12,9 +12,9 @@ async function loadInformation() {
 
     const response = await fetch('http://localhost:8080/users', {
         method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        }
+        // headers: {
+        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+        // }
     });
     if (response.status == 200) {
         const data = await response.json();
@@ -35,7 +35,7 @@ async function updateInformation(e) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             firstName: formData.firstName,
