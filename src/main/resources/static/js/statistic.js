@@ -1,12 +1,7 @@
 window.addEventListener('load', loadStats);
 
 async function loadStats() {
-    const response = await fetch('http://localhost:8080/statistics', {
-        method: 'GET',
-        // headers: {
-        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        // }
-    });
+    const response = await fetch('http://localhost:8080/statistics');
 
     if (response.status == 200) {
         const data = await response.json();

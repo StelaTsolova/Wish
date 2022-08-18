@@ -2,16 +2,16 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/online_shop?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-    username:
-    password: ""
+    username: root
+    password: "123456"
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     defer-datasource-initialization: true
   sql:
     init:
-      mode: always
+      mode: embedded
   mvc:
     hiddenmethod:
       filter:

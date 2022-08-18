@@ -88,11 +88,10 @@ footer {
     border-top-left-radius: 10px;
 }
 
-.card img {
+.cart > img {
     width: 300px;
     height: 300px;
 }
-
 
 form.main-form {
     background-image: linear-gradient(to bottom right, rgba(97, 0, 145, .145), rgba(255, 255, 255, 0.9));

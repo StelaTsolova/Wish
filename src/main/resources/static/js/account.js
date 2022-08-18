@@ -10,12 +10,7 @@ async function loadInformation() {
     const formElement = document.querySelector('form');
     formElement.addEventListener('submit', updateInformation)
 
-    const response = await fetch('http://localhost:8080/users', {
-        method: 'GET',
-        // headers: {
-        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        // }
-    });
+    const response = await fetch('http://localhost:8080/users');
     if (response.status == 200) {
         const data = await response.json();
 
@@ -35,7 +30,6 @@ async function updateInformation(e) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            // 'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
             firstName: formData.firstName,

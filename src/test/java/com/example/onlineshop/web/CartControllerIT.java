@@ -45,9 +45,6 @@ public class CartControllerIT {
     private MockMvc mockMvc;
 
     @Autowired
-    private CartRepository cartRepository;
-
-    @Autowired
     private UserEntityRepository userEntityRepository;
 
     @Autowired

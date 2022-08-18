@@ -8,13 +8,7 @@ window.addEventListener('load', () => {
 async function loadProduct() {
     const divElement = document.querySelector('.mt-5');
 
-    const response = await fetch('http://localhost:8080/users/wishlist', {
-        method: 'GET',
-        // headers: {
-        //     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-        // }
-    });
-
+    const response = await fetch('http://localhost:8080/users/wishlist');
     if (response.status == 200) {
         const data = await response.json();
 

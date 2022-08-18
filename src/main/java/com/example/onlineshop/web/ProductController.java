@@ -26,19 +26,19 @@ public class ProductController {
     }
 
     @GetMapping("/products/category")
-    public ResponseEntity<List<ProductDto>> getProductsByCategoryName(@RequestParam(value="name") String categoryName){
+    public ResponseEntity<List<ProductDto>> getProductsByCategoryName(@RequestParam(value = "name") String categoryName) {
         return ResponseEntity.ok(this.productService.getProductByCategoryDtos(categoryName));
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<ProductDetailsDto> getProduct(@PathVariable Long id){
+    public ResponseEntity<ProductDetailsDto> getProduct(@PathVariable Long id) {
         return ResponseEntity.ok(this.productService.getProductDetailsDtoById(id));
     }
 
     @PostMapping("/products/create")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<?> createProduct(@RequestBody @Valid ProductCreateDto productCreateDto,
-                                           BindingResult bindingResult){
+                                           BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(getErrorMessages(bindingResult.getAllErrors()));
         }
@@ -52,7 +52,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<?> editProduct(@RequestParam(value = "productId") Long productId,
                                          @RequestBody @Valid ProductCreateDto productCreateDto,
-                                           BindingResult bindingResult){
+                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(getErrorMessages(bindingResult.getAllErrors()));
         }
@@ -64,7 +64,7 @@ public class ProductController {
 
     @DeleteMapping("/products")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ResponseEntity<?> deleteProduct(@RequestParam(value = "id") Long id){
+    public ResponseEntity<?> deleteProduct(@RequestParam(value = "id") Long id) {
         this.productService.deleteProduct(id);
 
         return ResponseEntity.noContent().build();

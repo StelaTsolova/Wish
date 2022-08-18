@@ -30,7 +30,7 @@ async function addProduct() {
     });
 
     const response = await fetch('http://localhost:8080/categories');
-    if(response.status === 200){
+    if (response.status === 200) {
         const data = await response.json();
 
         let fragment = document.createDocumentFragment();
@@ -120,9 +120,9 @@ function account() {
     }
 }
 
-async function logout() {
-   let response = await fetch('http://localhost:8080/logout', {
-        method:'POST'
+function logout() {
+    fetch('http://localhost:8080/logout', {
+        method: 'POST'
     });
 
     localStorage.removeItem('email');

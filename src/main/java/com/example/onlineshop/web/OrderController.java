@@ -7,6 +7,7 @@ import com.example.onlineshop.service.OrderService;
 import com.example.onlineshop.service.impl.UserDetailsImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,12 +31,12 @@ public class OrderController {
 
     @PostMapping("/orders")
     public ResponseEntity<?> createOrder(@RequestBody @Valid OrderCreateDto orderCreateDto,
-                                         BindingResult bindingResult, Authentication authentication) {
+                                         BindingResult bindingResult,
+                                         @AuthenticationPrincipal UserDetailsImpl userDetails) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(getErrorMessages(bindingResult.getAllErrors()));
         }
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         this.orderService.createOrder(orderCreateDto, userDetails);
 
         return ResponseEntity.ok().build();

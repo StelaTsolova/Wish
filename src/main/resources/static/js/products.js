@@ -22,7 +22,7 @@ export function createDivElement(data) {
     firstDiv.classList.add('col-sm-4');
 
     let secondDiv = document.createElement('div');
-    secondDiv.classList.add('card');
+    secondDiv.classList.add('cart');
     secondDiv.dataset.id = data.id;
     firstDiv.append(secondDiv);
 
@@ -51,10 +51,10 @@ export function createDivElement(data) {
 function redirectDetails(e) {
     let element = e.target.parentNode;
 
-    if (!element.classList.contains('card')) {
+    if (!element.classList.contains('cart')) {
         element = element.parentNode;
     }
-    if (!element.classList.contains('card')) {
+    if (!element.classList.contains('cart')) {
         return;
     }
 

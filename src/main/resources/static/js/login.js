@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     document.querySelector('form').addEventListener('submit', loginUser);
-    document.querySelector('.register').addEventListener('click', () =>{
+    document.querySelector('.register').addEventListener('click', () => {
         window.location = '/register';
     });
 });
@@ -37,12 +37,12 @@ async function loginUser(e) {
         let role = data.roles[0];
         role = role.substring(5, role.length);
 
-        // localStorage.setItem("accessToken", data.token);
         localStorage.setItem("email", data.email);
         localStorage.setItem("firstName", data.firstName);
         localStorage.setItem("role", role);
 
         window.location = '/home';
     } else {
-        errorElement.style.visibility = 'visible';}
+        errorElement.style.visibility = 'visible';
+    }
 }
