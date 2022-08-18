@@ -1,6 +1,5 @@
 package com.example.onlineshop.model.dto;
 
-import com.example.onlineshop.model.validator.UserEmailUnique;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -15,7 +14,7 @@ public class OrderCreateDto {
     private String lastName;
 
     @NotBlank
-    @Email
+    @Email(message = "Incorrect email.")
     private String email;
 
     @NotBlank

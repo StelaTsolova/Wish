@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      mode: never
+
+cloudinary:
+  api-key: 941645277557341
+  api-secret: ${CLOUDINERY_API_SECRET}
+  cloud-name: dj0dxejrk

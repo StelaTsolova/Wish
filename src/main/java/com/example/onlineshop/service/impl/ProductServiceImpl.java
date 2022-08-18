@@ -41,7 +41,11 @@ public class ProductServiceImpl implements ProductService {
         return this.productRepository.findAllByCategory_Name(categoryName).stream()
                 .map(p -> {
                     ProductDto productDto = this.modelMapper.map(p, ProductDto.class);
-                    productDto.setImgUrl(p.getPictures().get(0).getUrl());
+                    if(p.getPictures().isEmpty()){
+                        productDto.setImgUrl("https://res.cloudinary.com/dj0dxejrk/image/upload/v1660579108/wish_c5gw2r.png");
+                    } else {
+                        productDto.setImgUrl(p.getPictures().get(0).getUrl());
+                    }
 
                     return productDto;
                 })

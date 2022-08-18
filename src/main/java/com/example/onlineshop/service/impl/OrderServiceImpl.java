@@ -34,6 +34,9 @@ public class OrderServiceImpl implements OrderService {
         UserEntity userEntity = this.userEntityService.getUserById(userDetails.getId());
 
         List<CartProduct> products = new ArrayList<>(userEntity.getCart().getCartProducts());
+        if (products.isEmpty()) {
+            return;
+        }
 
         Order order = this.modelMapper.map(orderCreateDto, Order.class);
         order.setOwner(userEntity);

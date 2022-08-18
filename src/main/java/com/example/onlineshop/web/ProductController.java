@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/category")
-    public ResponseEntity<List<ProductDto>> categories(@RequestParam(value="name") String categoryName){
+    public ResponseEntity<List<ProductDto>> getProductsByCategoryName(@RequestParam(value="name") String categoryName){
         return ResponseEntity.ok(this.productService.getProductByCategoryDtos(categoryName));
     }
 

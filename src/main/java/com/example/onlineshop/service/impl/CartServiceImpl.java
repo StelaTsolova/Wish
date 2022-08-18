@@ -72,7 +72,11 @@ public class CartServiceImpl implements CartService {
                     CartDto cartDto = this.modelMapper.map(p, CartDto.class);
 
                     ProductDto productDto = this.modelMapper.map(p.getProduct(), ProductDto.class);
-                    productDto.setImgUrl(p.getProduct().getPictures().get(0).getUrl());
+                    if(p.getProduct().getPictures().isEmpty()){
+                        productDto.setImgUrl("https://res.cloudinary.com/dj0dxejrk/image/upload/v1660579108/wish_c5gw2r.png");
+                    } else {
+                        productDto.setImgUrl(p.getProduct().getPictures().get(0).getUrl());
+                    }
 
                     cartDto.setProductDto(productDto);
                     cartDto.setAvailableQuantity(this.quantityService

@@ -124,12 +124,13 @@ async function logout() {
    let response = await fetch('http://localhost:8080/logout', {
         method:'POST'
     });
-console.log(response.status)
-    // localStorage.removeItem('accessToken');
+
     localStorage.removeItem('email');
     localStorage.removeItem('firstName');
     localStorage.removeItem('role');
     localStorage.removeItem('productId');
     sessionStorage.removeItem('productId');
     sessionStorage.removeItem('categoryName');
+
+    window.location = "/home";
 }

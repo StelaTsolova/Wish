@@ -86,7 +86,11 @@ public class UserEntityServiceImpl implements UserEntityService {
         return getUserById(id).getWishlist().stream()
                 .map(p -> {
                     ProductDto productDto = this.modelMapper.map(p, ProductDto.class);
-                    productDto.setImgUrl(p.getPictures().get(0).getUrl());
+                    if(p.getPictures().isEmpty()){
+                        productDto.setImgUrl("https://res.cloudinary.com/dj0dxejrk/image/upload/v1660579108/wish_c5gw2r.png");
+                    } else {
+                        productDto.setImgUrl(p.getPictures().get(0).getUrl());
+                    }
 
                     return productDto;
                 })
@@ -115,6 +119,7 @@ public class UserEntityServiceImpl implements UserEntityService {
         if (this.passwordEncoder.matches(userChangePasswordDto.getPassword(), userEntity.getPassword())) {
             userEntity.setPassword(this.passwordEncoder.encode(userChangePasswordDto.getNewPassword()));
             this.userEntityRepository.save(userEntity);
+
             return true;
         }
         return false;

@@ -2,6 +2,7 @@ package com.example.onlineshop.model.dto.user;
 
 import com.example.onlineshop.model.validator.UserEmailUnique;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -9,6 +10,7 @@ public class UserRegisterDto {
 
     @NotBlank()
     @Size(min = 3, message = "Email should be more than 3 symbols.")
+    @Email(message = "Incorrect email.")
     @UserEmailUnique
     private String email;
 

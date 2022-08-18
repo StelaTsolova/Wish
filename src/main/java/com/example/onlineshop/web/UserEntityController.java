@@ -2,10 +2,7 @@ package com.example.onlineshop.web;
 
 import com.example.onlineshop.model.dto.*;
 import com.example.onlineshop.model.dto.product.ProductDto;
-import com.example.onlineshop.model.dto.user.UserChangePasswordDto;
-import com.example.onlineshop.model.dto.user.UserCreateDto;
-import com.example.onlineshop.model.dto.user.UserRegisterDto;
-import com.example.onlineshop.model.dto.user.UserUpdateInformationDto;
+import com.example.onlineshop.model.dto.user.*;
 import com.example.onlineshop.model.enums.ERole;
 import com.example.onlineshop.service.UserEntityService;
 import com.example.onlineshop.service.impl.UserDetailsImpl;
@@ -34,7 +31,7 @@ public class UserEntityController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> getUser(Authentication authentication) {
+    public ResponseEntity<UserAccountDto> getUser(Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
         return ResponseEntity.ok(this.userEntityService.getUserAccountDto(userDetails.getId()));

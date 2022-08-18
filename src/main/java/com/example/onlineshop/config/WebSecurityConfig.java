@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/", "/home", "/details", "/navbar", "/categories", "/products",
                         "/products/category", "/products/{id}").permitAll()
-                .antMatchers("/product", "/user", "/statistics").hasRole(ERole.ADMIN.name())
+                .antMatchers("/product", "/user", "/statistic", "/statistics").hasRole(ERole.ADMIN.name())
                 .antMatchers("/login", "/users/login", "/register", "/users/register").anonymous()
                 .anyRequest().authenticated()
              .and()
