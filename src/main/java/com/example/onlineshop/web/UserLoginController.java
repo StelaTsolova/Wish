@@ -5,6 +5,7 @@ import com.example.onlineshop.model.dto.user.UserLoginDto;
 import com.example.onlineshop.service.UserEntityService;
 import com.example.onlineshop.service.impl.UserDetailsImpl;
 import com.example.onlineshop.service.impl.UserDetailsResponse;
+import org.apache.coyote.Request;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpUtils;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.HashMap;

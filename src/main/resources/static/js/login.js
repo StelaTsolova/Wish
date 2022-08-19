@@ -29,10 +29,9 @@ async function loginUser(e) {
             password
         })
     });
-    console.log(response)
+
     if (response.status == 200) {
         const data = await response.json();
-        console.log(data)
 
         let role = data.roles[0];
         role = role.substring(5, role.length);
