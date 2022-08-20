@@ -42,9 +42,9 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     }
 
     @Override
-    public boolean delete(String publicId) {
+    public boolean delete(String publicId, String folderName) {
         try {
-            this.cloudinary.uploader().destroy(publicId, Map.of("folder", "1"));
+            this.cloudinary.uploader().destroy(publicId, Map.of("folder", folderName));
         } catch (IOException e) {
             return false;
         }

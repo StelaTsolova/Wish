@@ -134,8 +134,9 @@ public class UserEntityServiceImpl implements UserEntityService {
     }
 
     @Override
-    public UserEntity getUserByEmail(String email) {
-        return this.userEntityRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " is not found!"));
+    public boolean isExistUser(String email, String password) {
+       Optional<UserEntity> userEntity = this.userEntityRepository.findByEmail(email);
+
+        return userEntity.isPresent() && this.passwordEncoder.matches(password, userEntity.get().getPassword());
     }
 }

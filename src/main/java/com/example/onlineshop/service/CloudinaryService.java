@@ -8,5 +8,5 @@ public interface CloudinaryService {
 
     CloudinaryImage upload(MultipartFile multipartFile, String folderName) throws IOException;
 
-    boolean delete(String publicId);
+    boolean delete(String publicId, String folderName);
 }

@@ -16,7 +16,8 @@ public class Quantity {
     @ManyToOne(optional = false)
     private Size size;
 
-    private Integer availableQuantity;
+    @Column(nullable = false)
+    private int availableQuantity;
 
     public Long getId() {
         return id;
@@ -42,11 +43,11 @@ public class Quantity {
         this.size = size;
     }
 
-    public Integer getAvailableQuantity() {
+    public int getAvailableQuantity() {
         return availableQuantity;
     }
 
-    public void setAvailableQuantity(Integer availableQuantity) {
+    public void setAvailableQuantity(int availableQuantity) {
         this.availableQuantity = availableQuantity;
     }
 }

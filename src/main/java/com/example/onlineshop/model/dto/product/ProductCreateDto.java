@@ -1,6 +1,7 @@
 package com.example.onlineshop.model.dto.product;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Map;
@@ -11,7 +12,7 @@ public class ProductCreateDto {
     @Size(max = 20, message = "Name should be less than 20 symbols.")
     private String name;
 
-    @NotBlank
+    @NotNull
     private BigDecimal price;
 
     @NotBlank
@@ -19,7 +20,7 @@ public class ProductCreateDto {
 
     private String material;
 
-    @NotBlank
+    @NotNull
     private Map<String , Integer> quantities;
 
     public String getName() {

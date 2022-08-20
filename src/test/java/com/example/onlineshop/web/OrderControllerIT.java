@@ -6,6 +6,7 @@ import com.example.onlineshop.model.enums.ERole;
 import com.example.onlineshop.repisotiry.*;
 import com.example.onlineshop.service.impl.UserDetailsImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -43,9 +44,6 @@ public class OrderControllerIT {
     private MockMvc mockMvc;
 
     @Autowired
-    private OrderRepository orderRepository;
-
-    @Autowired
     private UserEntityRepository userEntityRepository;
 
     @Autowired
@@ -68,6 +66,17 @@ public class OrderControllerIT {
 
     @Autowired
     private ObjectMapper mapper;
+
+    @AfterEach
+    void tearDown() {
+        this.userEntityRepository.deleteAll();
+        this.productRepository.deleteAll();
+        this.cartProductRepository.deleteAll();
+        this.categoryRepository.deleteAll();
+        this.quantityRepository.deleteAll();
+        this.sizeRepository.deleteAll();
+    }
+
 
     @Test
     void createOrderWithValidOrderCreateDto() throws Exception {

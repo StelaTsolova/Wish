@@ -206,7 +206,7 @@ public class UserEntityControllerIT {
 
     @Test
     @WithMockUser(value = "admin", roles = {"ADMIN"})
-    void createUserWithNotValidUserCreateDto() throws Exception {
+    void createUserWithNotValidUserCreateDtoWhenEmailLassThan3Symbols() throws Exception {
         UserCreateDto userCreateDto = initUserCreateDto("e", "pass", " ", "");
 
         MockHttpServletRequestBuilder mockRequest = post("/users")

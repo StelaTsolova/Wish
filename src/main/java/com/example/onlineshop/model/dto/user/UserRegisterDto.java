@@ -9,12 +9,13 @@ import javax.validation.constraints.Size;
 public class UserRegisterDto {
 
     @NotBlank()
-    @Size(min = 3, message = "Email should be more than 3 symbols.")
+    @Size(min = 3, message = "Email should be equal or more than 3 symbols.")
     @Email(message = "Incorrect email.")
     @UserEmailUnique
     private String email;
 
-    @Size(min = 1, max = 40,  message = "Password should be between 8 and 40 symbols.")
+    @NotBlank
+    @Size(min = 8, max = 40,  message = "Password should be between 8 and 40 symbols.")
     private String password;
 
     @NotBlank

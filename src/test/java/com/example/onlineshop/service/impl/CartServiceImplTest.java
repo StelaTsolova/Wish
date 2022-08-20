@@ -31,14 +31,19 @@ public class CartServiceImplTest {
 
     @Mock
     private CartRepository cartRepositoryMock;
+
     @Mock
     private UserEntityService userEntityServiceMock;
+
     @Mock
     private ProductService productServiceMock;
+
     @Mock
     private QuantityService quantityServiceMock;
+
     @Mock
     private CartProductService cartProductServiceMock;
+
     @Mock
     private ModelMapper modelMapperMock;
 

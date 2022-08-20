@@ -4,6 +4,7 @@ import com.example.onlineshop.model.dto.product.ProductCreateDto;
 import com.example.onlineshop.model.dto.product.ProductDetailsDto;
 import com.example.onlineshop.model.dto.product.ProductDto;
 import com.example.onlineshop.service.ProductService;
+import com.example.onlineshop.service.StatisticService;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,9 +21,11 @@ import static com.example.onlineshop.web.UserRegisterController.getErrorMessages
 public class ProductController {
 
     private final ProductService productService;
+    private final StatisticService statisticService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, StatisticService statisticService) {
         this.productService = productService;
+        this.statisticService = statisticService;
     }
 
     @GetMapping("/products/category")
@@ -39,6 +42,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<?> createProduct(@RequestBody @Valid ProductCreateDto productCreateDto,
                                            BindingResult bindingResult) {
+        statisticService.getStatistic();
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(getErrorMessages(bindingResult.getAllErrors()));
         }

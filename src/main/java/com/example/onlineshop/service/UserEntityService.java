@@ -31,5 +31,5 @@ public interface UserEntityService {
 
     void clearCart(Long id);
 
-    UserEntity getUserByEmail(String email);
+    boolean isExistUser(String email, String password);
 }

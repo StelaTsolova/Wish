@@ -28,11 +28,14 @@ public class OrderServiceImplTest {
     private CartProduct cartProductTest;
 
     @Mock
-    OrderRepository orderRepositoryMock;
+    private OrderRepository orderRepositoryMock;
+
     @Mock
     private UserEntityService userEntityServiceMock;
+
     @Mock
     private ModelMapper modelMapperMock;
+
     @Mock
     private UserDetailsImpl userDetailsMock;
 
@@ -45,7 +48,7 @@ public class OrderServiceImplTest {
     }
 
     @Test
-    public void createOrder() {
+    public void createOrderTest() {
         OrderCreateDto orderCreateDto = new OrderCreateDto();
         Order order = new Order();
 

@@ -101,6 +101,7 @@ function onClick(e) {
             logout();
             break;
         case 'Create product':
+            sessionStorage.setItem("create", "true");
             window.location = '/product';
             break;
         case 'Create user':

@@ -9,8 +9,13 @@ public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String folderName;
+
+    @Column(nullable = false)
     private String url;
+
+    @Column(nullable = false)
     private String publicId;
 
     @ManyToOne

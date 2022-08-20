@@ -28,6 +28,7 @@ public class CategoryServiceImplTest {
 
     @Mock
     private CategoryRepository categoryRepositoryMock;
+
     @Mock
     private ModelMapper modelMapperMock;
 

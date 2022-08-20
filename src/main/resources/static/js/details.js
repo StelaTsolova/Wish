@@ -165,6 +165,7 @@ function createSpan(quantity) {
 }
 
 function redirectEdit() {
+    sessionStorage.removeItem("create");
     window.location = "/product";
 }
 

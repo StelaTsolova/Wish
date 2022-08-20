@@ -35,6 +35,7 @@ class CartProductServiceImplTest {
 
     @Mock
     private CartProductRepository cartProductRepositoryMock;
+
     @Mock
     private UserEntityService userEntityServiceMock;
 

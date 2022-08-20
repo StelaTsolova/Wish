@@ -16,7 +16,6 @@ public class ApplicationBeanConfiguration {
 
     private final CloudinaryConfig config;
 
-
     public ApplicationBeanConfiguration(CloudinaryConfig config) {
         this.config = config;
     }
@@ -25,13 +24,6 @@ public class ApplicationBeanConfiguration {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new Pbkdf2PasswordEncoder();
-//    }
-
-
 
     @Bean
     public Cloudinary cloudinary() {

@@ -35,7 +35,7 @@ public class PictureController {
         String folderName = productId.toString();
 
         CloudinaryImage cloudinaryImage = this.cloudinaryService.upload(multipartFile, folderName);
-        Picture picture = this.pictureService.savePicture(cloudinaryImage, folderName);
+        Picture picture = this.pictureService.savePicture(cloudinaryImage, folderName, this.productService.getProductById(productId));
         this.productService.addPictureByProductId(productId, picture);
 
         return ResponseEntity.ok().build();
@@ -44,7 +44,8 @@ public class PictureController {
     @Transactional
     @DeleteMapping("/pictures/delete")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public String delete(@RequestBody Map<String ,String> info) {
+    public String delete(@RequestBody Map<String, String> info) {
+
         this.pictureService.deleteByUrl(info.get("url"));
 
         return "redirect:/pictures";

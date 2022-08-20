@@ -12,8 +12,9 @@ public class WebConfiguration implements WebMvcConfigurer {
     private final StatisticInterceptor statisticInterceptor;
     private final StatisticOrderInterceptor statisticOrderInterceptor;
 
-    public WebConfiguration(StatisticInterceptor statsInterceptor1, StatisticOrderInterceptor statisticOrderInterceptor) {
-        this.statisticInterceptor = statsInterceptor1;
+    public WebConfiguration(StatisticInterceptor statisticInterceptor, StatisticOrderInterceptor statisticOrderInterceptor) {
+        this.statisticInterceptor = statisticInterceptor;
+
         this.statisticOrderInterceptor = statisticOrderInterceptor;
     }
 

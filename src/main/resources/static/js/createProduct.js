@@ -1,6 +1,6 @@
 let productId = sessionStorage.getItem('productId');
 window.addEventListener('load', () => {
-    if (productId !== null) {
+    if (!sessionStorage.getItem('create')) {
         fillFields();
     }
 
@@ -48,13 +48,14 @@ async function removePicture(e) {
     }
 
     let url = e.target.src;
+    console.log(url)
     const response = await fetch('http://localhost:8080/pictures/delete', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            'url': url
+            url
         })
     });
 
@@ -78,11 +79,16 @@ async function createProduct(e) {
     removeErrorElements();
 
     const formData = new FormData(e.target);
+    let sizes = formData.getAll('size')
+        .filter((element, index) => element.trim() != '' && index.trim() != '') ;
+    if(sizes.length == 0){
+        alert('Size and quantity are required.');
+        return;
+    }
     let name = formData.get('name');
     let price = formData.get('price');
     let category = formData.get('category');
     let material = formData.get('material');
-    let sizes = formData.getAll('size');
     let quantities = formData.getAll('quantity');
 
     let availableQuantities = {};
@@ -143,12 +149,11 @@ async function editProduct(e) {
             'quantities': availableQuantities,
         })
     });
-    const data = await response.json();
 
     if (response.status == 200) {
         sendImgs();
-        e.target.reset();
         alert('Successfully edited product.');
+        window.location = '/details';
     } else {
         showsErrors(data);
     }
@@ -317,7 +322,7 @@ function sendImgs() {
     })
     Promise.all(
         formData.map(f => {
-            fetch('http://localhost:8080/pictures/add?folderName=' + data.productId, {
+            fetch('http://localhost:8080/pictures/add?folderName=' + productId, {
                 method: 'POST',
                 body: f
             });

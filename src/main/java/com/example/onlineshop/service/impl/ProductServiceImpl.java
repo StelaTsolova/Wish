@@ -120,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Long id) {
         Product product = getProductById(id);
-        product.getPictures().forEach(p -> this.cloudinaryService.delete(p.getPublicId()));
+        product.getPictures().forEach(p -> this.cloudinaryService.delete(p.getPublicId(), p.getFolderName()));
 
         this.productRepository.delete(product);
     }
